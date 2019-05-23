@@ -4,7 +4,22 @@ import 'package:mnem/leitner/shuffler.dart';
 /// An implementation of the Leitner system (https://en.wikipedia.org/wiki/Leitner_system).
 ///
 /// The box has [last_bucket] buckets (numbered `1-[last_bucket]`) plus a "waiting
-/// bucket" (numbered `0`).
+/// bucket" (numbered `0`). In the language of the Leitner system, the questions
+/// in box 1 should be asked every session, those in box 2 should be asked every
+/// two sessions, and so on.
+///
+/// As a question is answered correctly, it gets "promoted" to the next bucket.
+/// If a question is answered incorrectly, it gets "demoted" all the way back
+/// to the first bucket so that it can be refreshed in the user's memory.
+///
+/// Once a question in [last_bucket] is answered correctly, it should graduate
+/// into the class of "known" questions which are never asked again. (NOTE: we
+/// don't currently do this.)
+///
+/// This class simulates the physical box. In other words, it provides
+/// methods to _use_ the box (get the next question, promote or demote a
+/// question), but none of the logic to play the game (tracking which box is
+/// "active," asking the questions, when to promote or demote, etc.).
 class LeitnerBox {
   /// Creates a new, empty Leitner box.
   ///

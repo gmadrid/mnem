@@ -72,59 +72,49 @@ void main() {
     expect(q.q, equals(Q(size - 1)));
   });
 
-//  test("simple next", () {
-//    var size = 3;
-//    var lb = simpleTestSet(size);
-//
-//    // The questions start in waiting.
-//    var q = lb.next(0);
-//    expect(q, equals(null));
-//
-//    lb.
-//
-//    expect(q.q, equals(Q(size - 1)));
-//  });
-//
-//  test("simple moves", () {
-//    var size = 5;
-//    var lb = simpleTestSet(size);
-//    expect(lb.bucketSize(0), equals(size));
-//
-//    var q0 = lb.next(0);
-//    lb.moveToFirst(0);
-//    expect(lb.bucketSize(0), equals(size - 1));
-//    expect(lb.bucketSize(1), equals(1));
-//
-//    var q1 = lb.next(0);
-//    expect(q1, isNot(equals(q0)));
-//
-//    var q2 = lb.next(1);
-//    expect(q2, equals(q0));
-//  });
-//
-//  test("deeper moves", () {
-//    var size = 11;
-//    var lb = simpleTestSet(size);
-//    expect(lb.bucketSize(0), equals(size));
-//
-//    lb.moveToFirst(0);
-//    lb.moveToFirst(0);
-//    lb.moveToFirst(0);
-//    lb.moveToFirst(0);
-//    lb.moveToFirst(0);
-//    lb.moveToFirst(0);
-//
-//    lb.moveUp(1);
-//    lb.moveUp(1);
-//    lb.moveUp(1);
-//
-//    lb.moveUp(2);
-//
-//    // TODO: you should check that the correct questions are in the right buckets.
-//
-//    expect(lb.bucketSize(0), equals(5));
-//    expect(lb.bucketSize(1), equals(3));
-//    expect(lb.bucketSize(2), equals(2));
-//    expect(lb.bucketSize(3), equals(1));
-//  });
+  test("simple next", () {
+    var size = 3;
+    var lb = simpleTestSet(size);
+    lb.makeActive(size);
+
+    var q = lb.next(0);
+    expect(q.q, equals(Q(size - 1)));
+  });
+
+  test("simple moves", () {
+    var size = 5;
+    var lb = simpleTestSet(size);
+    lb.makeActive(size);
+
+    var q0 = lb.next(0);
+    lb.promote(0);
+    expect(lb.totalSize, equals(size));
+    expect(lb.activeSize, equals(size));
+    expect(lb.waitingSize, equals(0));
+    expect(lb.knownSize, equals(0));
+
+    var q1 = lb.next(1);
+    var q2 = lb.next(0);
+    expect(q1, equals(q0));
+    expect(q2, isNot(equals(q0)));
+
+    lb.promote(1);
+    lb.promote(0);
+    var q4 = lb.next(0);
+    var q5 = lb.next(1);
+    var q6 = lb.next(2);
+    var n0 = lb.next(3);
+    expect(q5, equals(q2));
+    expect(q6, equals(q1));
+    expect(n0, isNull);
+
+    var size0 = lb.bucketSize(0);
+    lb.demote(2);
+    var size1 = lb.bucketSize(0);
+    var q7 = lb.next(0);
+    var n1 = lb.next(2);
+    expect(n1, isNull);
+    expect(q7, equals(q4));
+    expect(size0, equals(size1 - 1));
+  });
 }

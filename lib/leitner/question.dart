@@ -8,6 +8,7 @@ class Question {
 
   /// Gets the question.
   String get q => _q;
+
   /// Gets the answer.
   String get a => _a;
 
@@ -32,4 +33,3 @@ class Question {
     return _a.toUpperCase() == answer.toUpperCase();
   }
 }
-

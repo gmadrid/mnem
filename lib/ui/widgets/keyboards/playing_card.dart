@@ -6,8 +6,8 @@ import 'keyboard_base.dart';
 class PlayingCardKeyboard extends KeyboardBase {
   PlayingCardKeyboard(
       {EdgeInsets padding,
-        @required TextStyle textStyle,
-        KeyCallback onPressed})
+      @required TextStyle textStyle,
+      KeyCallback onPressed})
       : super(padding: padding, textStyle: textStyle, onPressed: onPressed);
 
   @override
@@ -45,7 +45,6 @@ class PlayingCardKeyboard extends KeyboardBase {
               buildInputButton(symbolForSuit("C")),
             ]),
           ],
-        )
-    );
+        ));
   }
 }

@@ -10,10 +10,12 @@ void main() {
   testWidgets('test playing card keyboard', (WidgetTester tester) async {
     var result = "";
 
-    var widget = ltr(PlayingCardKeyboard(textStyle: TextStyle(),
-    onPressed: (ch) {
-      result += ch;
-    },));
+    var widget = ltr(PlayingCardKeyboard(
+      textStyle: TextStyle(),
+      onPressed: (ch) {
+        result += ch;
+      },
+    ));
 
     await tester.pumpWidget(widget);
 
@@ -35,7 +37,13 @@ void main() {
     await tester.tap(find.text(DIAMOND_UNICHAR));
     await tester.tap(find.text(CLUB_UNICHAR));
 
-    expect(result, equals("A23456789TJQK" + SPADE_UNICHAR + HEART_UNICHAR + DIAMOND_UNICHAR + CLUB_UNICHAR));
+    expect(
+        result,
+        equals("A23456789TJQK" +
+            SPADE_UNICHAR +
+            HEART_UNICHAR +
+            DIAMOND_UNICHAR +
+            CLUB_UNICHAR));
   });
 
   testWidgets('test numeric keyboard', (WidgetTester tester) async {

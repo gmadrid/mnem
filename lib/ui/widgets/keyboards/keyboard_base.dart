@@ -17,7 +17,10 @@ abstract class KeyboardBase extends StatelessWidget {
 
     return Container(
       child: MaterialButton(
-        child: Text(txt, style: textStyle,),
+        child: Text(
+          txt,
+          style: textStyle,
+        ),
         onPressed: callback,
       ),
       padding: EdgeInsets.all(8.0),

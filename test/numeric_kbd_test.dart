@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mnem/ui/widgets/keyboards/numeric.dart';
 
+import 'helpers.dart';
+
 void main() {
   testWidgets('test numeric keyboard', (WidgetTester tester) async {
     var result = "";
 
-    var widget = Directionality(
-        textDirection: TextDirection.ltr,
-        child: NumericKeyboard(
-          textStyle: TextStyle(),
-          onPressed: (ch) {
-            result += ch;
-          },
-        ));
+    var widget = ltr(NumericKeyboard(
+      textStyle: TextStyle(),
+      onPressed: (ch) {
+        result += ch;
+      },
+    ));
 
     await tester.pumpWidget(widget);
 

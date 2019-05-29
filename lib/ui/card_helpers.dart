@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const SPADE_UNICHAR = '\u2660';
 const HEART_UNICHAR = '\u2665';
-const DIAMOND_UNICHAR = '-u2666';
+const DIAMOND_UNICHAR = '\u2666';
 const CLUB_UNICHAR = '\u2663';
 
 // Cards are identified by name.

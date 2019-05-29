@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+const SPADE_UNICHAR = '\u2660';
+const HEART_UNICHAR = '\u2665';
+const DIAMOND_UNICHAR = '-u2666';
+const CLUB_UNICHAR = '\u2663';
+
 // Cards are identified by name.
 //
 // PLAYING_CARD ==> PIPS SUIT  // There is no space between PIPS and SUIT
@@ -25,16 +30,16 @@ String symbolForSuit(String suit) {
   var suitSymbol;
   switch (suit) {
     case 'H':
-      suitSymbol = "\u2665";
+      suitSymbol = HEART_UNICHAR;
       break;
     case 'S':
-      suitSymbol = "\u2660";
+      suitSymbol = SPADE_UNICHAR;
       break;
     case 'D':
-      suitSymbol = "\u2666";
+      suitSymbol = DIAMOND_UNICHAR;
       break;
     case 'C':
-      suitSymbol = "\u2663";
+      suitSymbol = CLUB_UNICHAR;
       break;
   }
   return suitSymbol;

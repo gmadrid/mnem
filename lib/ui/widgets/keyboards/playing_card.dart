@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:mnem/ui/card_helpers.dart';
 
 import 'keyboard_base.dart';
@@ -18,7 +17,7 @@ class PlayingCardKeyboard extends KeyboardBase {
         child: Table(
           children: <TableRow>[
             TableRow(children: <Widget>[
-              buildInputButton("1"),
+              buildInputButton("A"),
               buildInputButton("2"),
               buildInputButton("3"),
               buildInputButton(""),
@@ -39,7 +38,7 @@ class PlayingCardKeyboard extends KeyboardBase {
               buildInputButton(symbolForSuit("D")),
             ]),
             TableRow(children: <Widget>[
-              buildInputButton("10"),
+              buildInputButton("T"),
               buildInputButton("J"),
               buildInputButton("Q"),
               buildInputButton("K"),
